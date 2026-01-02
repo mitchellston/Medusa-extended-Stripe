@@ -19,6 +19,7 @@ This module registers the following provider identifiers (used to form Medusa pr
 - **giropay**: `stripe-giropay`
 - **iDEAL**: `stripe-ideal`
 - **OXXO**: `stripe-oxxo`
+- **PayPal**: `stripe-paypal`
 - **PromptPay**: `stripe-promptpay`
 - **Przelewy24**: `stripe-przelewy24`
 - **Wero**: `stripe-wero` (**Stripe private preview** — requires enablement)
@@ -127,6 +128,7 @@ If you use `id: "stripe"` in `medusa-config.ts`, these are the provider IDs you 
 | Przelewy24   | `pp_stripe-przelewy24_stripe` |
 | PromptPay    | `pp_stripe-promptpay_stripe`  |
 | OXXO         | `pp_stripe-oxxo_stripe`       |
+| PayPal       | `pp_stripe-paypal_stripe`     |
 | Wero         | `pp_stripe-wero_stripe`       |
 
 ## Webhooks (production)
@@ -154,6 +156,7 @@ If your module provider `id` is `stripe`, the webhook URLs are:
 | Przelewy24          | `{server_url}/hooks/payment/stripe-przelewy24_stripe` |
 | PromptPay           | `{server_url}/hooks/payment/stripe-promptpay_stripe`  |
 | OXXO                | `{server_url}/hooks/payment/stripe-oxxo_stripe`       |
+| PayPal              | `{server_url}/hooks/payment/stripe-paypal_stripe`     |
 | Wero                | `{server_url}/hooks/payment/stripe-wero_stripe`       |
 
 ### Webhook events
