@@ -1,6 +1,6 @@
 {
   "name": "medusa-payment-stripe-extended",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Extended Stripe payment provider for Medusa",
   "main": "dist/index.js",
   "repository": {
