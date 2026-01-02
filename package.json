@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@medusajs/framework": "2.12.3",
+    "@types/jest": "^30.0.0",
     "jest": "^30.2.0"
   },
   "peerDependencies": {
