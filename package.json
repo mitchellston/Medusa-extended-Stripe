@@ -22,7 +22,7 @@
     "test": "jest --passWithNoTests src",
     "build": "bun run rm -rf dist && bun run tsc --build ./tsconfig.json",
     "watch": "bun run tsc --watch",
-    "create-release": "bun run build; cp package.json dist/package.json; cp README.md dist/README.md; $(cd dist && npm publish)"
+    "create-release": "bun run build; npm publish"
   },
   "devDependencies": {
     "@medusajs/framework": "2.12.3",
