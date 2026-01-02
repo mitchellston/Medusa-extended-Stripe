@@ -4,9 +4,11 @@ import {
   StripeBlikService,
   StripeGiropayService,
   StripeIdealService,
+  StripeApplePayService,
   StripeProviderService,
   StripePrzelewy24Service,
   StripePromptpayService,
+  StripeWeroService,
   OxxoProviderService,
 } from './services'
 
@@ -15,9 +17,11 @@ const services = [
   StripeBlikService,
   StripeGiropayService,
   StripeIdealService,
+  StripeApplePayService,
   StripeProviderService,
   StripePrzelewy24Service,
   StripePromptpayService,
+  StripeWeroService,
   OxxoProviderService,
 ]
 

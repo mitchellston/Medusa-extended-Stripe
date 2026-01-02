@@ -26,8 +26,8 @@ export interface StripeOptions {
 }
 
 export interface PaymentIntentOptions {
-  capture_method?: 'automatic' | 'manual'
-  setup_future_usage?: 'on_session' | 'off_session'
+  capture_method?: "automatic" | "manual"
+  setup_future_usage?: "on_session" | "off_session"
   payment_method_types?: string[]
   payment_method_options?: {
     oxxo?: {
@@ -37,21 +37,23 @@ export interface PaymentIntentOptions {
 }
 
 export const ErrorCodes = {
-  PAYMENT_INTENT_UNEXPECTED_STATE: 'payment_intent_unexpected_state',
+  PAYMENT_INTENT_UNEXPECTED_STATE: "payment_intent_unexpected_state",
 }
 
 export const ErrorIntentStatus = {
-  SUCCEEDED: 'succeeded',
-  CANCELED: 'canceled',
+  SUCCEEDED: "succeeded",
+  CANCELED: "canceled",
 }
 
 export const PaymentProviderKeys = {
-  STRIPE: 'stripe',
-  OXXO: 'stripe-oxxo',
-  BAN_CONTACT: 'stripe-bancontact',
-  BLIK: 'stripe-blik',
-  GIROPAY: 'stripe-giropay',
-  IDEAL: 'stripe-ideal',
-  PRZELEWY_24: 'stripe-przelewy24',
-  PROMPT_PAY: 'stripe-promptpay',
+  STRIPE: "stripe",
+  OXXO: "stripe-oxxo",
+  BAN_CONTACT: "stripe-bancontact",
+  BLIK: "stripe-blik",
+  GIROPAY: "stripe-giropay",
+  IDEAL: "stripe-ideal",
+  PRZELEWY_24: "stripe-przelewy24",
+  PROMPT_PAY: "stripe-promptpay",
+  WERO: "stripe-wero",
+  APPLE_PAY: "stripe-apple-pay",
 }

@@ -1,6 +1,6 @@
 {
-  "name": "@medusajs/payment-stripe",
-  "version": "2.12.3",
+  "name": "medusa-payment-stripe-extended",
+  "version": "1.0.0",
   "description": "Stripe payment provider for Medusa",
   "main": "dist/index.js",
   "repository": {
@@ -20,12 +20,13 @@
   "author": "Medusa",
   "license": "MIT",
   "scripts": {
-    "test": "../../../../node_modules/.bin/jest --passWithNoTests src",
-    "build": "yarn run -T rimraf dist && yarn run -T tsc --build ./tsconfig.json",
-    "watch": "yarn run -T tsc --watch"
+    "test": "jest --passWithNoTests src",
+    "build": "bun run rm -rf dist && bun run tsc --build ./tsconfig.json",
+    "watch": "bun run tsc --watch"
   },
   "devDependencies": {
-    "@medusajs/framework": "2.12.3"
+    "@medusajs/framework": "2.12.3",
+    "jest": "^30.2.0"
   },
   "peerDependencies": {
     "@medusajs/framework": "2.12.3"
@@ -33,7 +34,6 @@
   "dependencies": {
     "stripe": "^15.5.0"
   },
-  "gitHead": "81a7ff73d012fda722f6e9ef0bd9ba0232d37808",
   "keywords": [
     "medusa-plugin",
     "medusa-plugin-payment"
