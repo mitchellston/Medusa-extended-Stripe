@@ -21,7 +21,14 @@ This module registers the following provider identifiers (used to form Medusa pr
 - **OXXO**: `stripe-oxxo`
 - **PromptPay**: `stripe-promptpay`
 - **Przelewy24**: `stripe-przelewy24`
-- **Wero**: `stripe-wero`
+- **Wero**: `stripe-wero` (**Stripe private preview** — requires enablement)
+
+### Note on Wero (Stripe private preview)
+
+Stripe’s `wero` payment method is currently in **private preview**, so attempting to create a PaymentIntent with `payment_method_types: ["wero"]` will fail unless Stripe has enabled Wero for your account.
+
+- **Docs**: https://docs.stripe.com/payments/wero
+- **Enable payment methods**: https://dashboard.stripe.com/account/payments/settings
 
 ## Quickstart
 
@@ -48,12 +55,12 @@ module.exports = defineConfig({
   // ...
   modules: [
     {
-      resolve: '@medusajs/medusa/payment',
+      resolve: "@medusajs/medusa/payment",
       options: {
         providers: [
           {
-            resolve: 'medusa-payment-stripe-extended',
-            id: 'stripe',
+            resolve: "medusa-payment-stripe-extended",
+            id: "stripe",
             options: {
               apiKey: process.env.STRIPE_API_KEY,
               webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
@@ -69,7 +76,7 @@ module.exports = defineConfig({
       },
     },
   ],
-})
+});
 ```
 
 ### Environment variables

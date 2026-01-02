@@ -39,7 +39,13 @@ import {
   PaymentActions,
   PaymentSessionStatus,
 } from '@medusajs/framework/utils'
-import { ErrorCodes, ErrorIntentStatus, PaymentIntentOptions, StripeOptions } from '../types'
+import {
+  ErrorCodes,
+  ErrorIntentStatus,
+  PaymentIntentOptions,
+  PaymentProviderKeys,
+  StripeOptions,
+} from '../types'
 import { getAmountFromSmallestUnit, getSmallestUnit } from '../utils/get-smallest-unit'
 
 type StripeIndeterminateState = {
@@ -123,6 +129,27 @@ abstract class StripeBase extends AbstractPaymentProvider<StripeOptions> {
 
   handleStripeError(error: any): HandledErrorType {
     switch (error.type) {
+      case 'StripeInvalidRequestError': {
+        const providerIdentifier = (this.constructor as any)?.identifier as string | undefined
+        const msg = String(error?.message ?? '')
+
+        if (providerIdentifier === PaymentProviderKeys.WERO || msg.includes('"wero"')) {
+          throw this.buildError(
+            [
+              'Stripe rejected the PaymentIntent request because Wero is not enabled for this Stripe account.',
+              'Wero is currently a private preview payment method at Stripe, so you must enable it in your Stripe Dashboard (Payments settings) and/or request access.',
+              'Docs: https://docs.stripe.com/payments/wero',
+              'Settings: https://dashboard.stripe.com/account/payments/settings',
+            ].join(' '),
+            error,
+          )
+        }
+
+        throw this.buildError(
+          'An error occurred in InitiatePayment during creation of stripe payment intent',
+          error,
+        )
+      }
       case 'StripeCardError':
         // Stripe has created a payment intent but it failed
         // Extract and return paymentIntent object to be stored in payment_session
