@@ -1,12 +1,11 @@
 {
   "name": "medusa-payment-stripe-extended",
   "version": "1.0.0",
-  "description": "Stripe payment provider for Medusa",
+  "description": "Extended Stripe payment provider for Medusa",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/medusajs/medusa",
-    "directory": "packages/modules/providers/payment-stripe"
+    "url": "https://github.com/mitchellston/Medusa-extended-Stripe"
   },
   "files": [
     "dist",
@@ -17,12 +16,13 @@
   "engines": {
     "node": ">=20"
   },
-  "author": "Medusa",
+  "author": "Mitchellston",
   "license": "MIT",
   "scripts": {
     "test": "jest --passWithNoTests src",
     "build": "bun run rm -rf dist && bun run tsc --build ./tsconfig.json",
-    "watch": "bun run tsc --watch"
+    "watch": "bun run tsc --watch",
+    "create-release": "bun run build; cp package.json dist/package.json; cp README.md dist/README.md; $(cd dist && npm publish)"
   },
   "devDependencies": {
     "@medusajs/framework": "2.12.3",
@@ -36,6 +36,7 @@
   },
   "keywords": [
     "medusa-plugin",
-    "medusa-plugin-payment"
+    "medusa-plugin-payment",
+    "stripe"
   ]
 }
