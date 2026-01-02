@@ -24,3 +24,4 @@ class PaypalProviderService extends StripeBase {
 }
 
 export default PaypalProviderService;
+

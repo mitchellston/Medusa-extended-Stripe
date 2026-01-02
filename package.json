@@ -30,7 +30,7 @@
     "jest": "^30.2.0"
   },
   "peerDependencies": {
-    "@medusajs/framework": "2.12.3"
+    "@medusajs/framework": ">=2.8.8"
   },
   "dependencies": {
     "stripe": "^15.5.0"
