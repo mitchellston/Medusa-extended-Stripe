@@ -33,6 +33,13 @@ export interface PaymentIntentOptions {
     oxxo?: {
       expires_after_days?: number;
     };
+    klarna?: {
+      /**
+       * Optional locale hint for Klarna (e.g. "en-US", "de-DE").
+       * Stripe will still validate availability based on account/region/currency.
+       */
+      preferred_locale?: string;
+    };
   };
 }
 
@@ -57,4 +64,5 @@ export const PaymentProviderKeys = {
   PROMPT_PAY: "stripe-promptpay",
   WERO: "stripe-wero",
   APPLE_PAY: "stripe-apple-pay",
+  KLARNA: "stripe-klarna",
 };

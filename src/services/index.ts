@@ -8,4 +8,5 @@ export { default as StripeProviderService } from "./stripe-provider";
 export { default as StripePrzelewy24Service } from "./stripe-przelewy24";
 export { default as StripePromptpayService } from "./stripe-promptpay";
 export { default as StripeWeroService } from "./stripe-wero";
+export { default as StripeKlarnaService } from "./stripe-klarna";
 export { default as OxxoProviderService } from "./stripe-oxxo";

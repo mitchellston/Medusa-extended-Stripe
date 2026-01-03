@@ -18,6 +18,7 @@ This module registers the following provider identifiers (used to form Medusa pr
 - **BLIK**: `stripe-blik`
 - **giropay**: `stripe-giropay`
 - **iDEAL**: `stripe-ideal`
+- **Klarna**: `stripe-klarna`
 - **OXXO**: `stripe-oxxo`
 - **PayPal**: `stripe-paypal`
 - **PromptPay**: `stripe-promptpay`
@@ -28,8 +29,8 @@ This module registers the following provider identifiers (used to form Medusa pr
 
 Stripe’s `wero` payment method is currently in **private preview**, so attempting to create a PaymentIntent with `payment_method_types: ["wero"]` will fail unless Stripe has enabled Wero for your account.
 
-- **Docs**: https://docs.stripe.com/payments/wero
-- **Enable payment methods**: https://dashboard.stripe.com/account/payments/settings
+- **Docs**: `https://docs.stripe.com/payments/wero`
+- **Enable payment methods**: `https://dashboard.stripe.com/account/payments/settings`
 
 ## Quickstart
 
@@ -125,6 +126,7 @@ If you use `id: "stripe"` in `medusa-config.ts`, these are the provider IDs you 
 | BLIK         | `pp_stripe-blik_stripe`       |
 | giropay      | `pp_stripe-giropay_stripe`    |
 | iDEAL        | `pp_stripe-ideal_stripe`      |
+| Klarna       | `pp_stripe-klarna_stripe`     |
 | Przelewy24   | `pp_stripe-przelewy24_stripe` |
 | PromptPay    | `pp_stripe-promptpay_stripe`  |
 | OXXO         | `pp_stripe-oxxo_stripe`       |
@@ -153,6 +155,7 @@ If your module provider `id` is `stripe`, the webhook URLs are:
 | BLIK                | `{server_url}/hooks/payment/stripe-blik_stripe`       |
 | giropay             | `{server_url}/hooks/payment/stripe-giropay_stripe`    |
 | iDEAL               | `{server_url}/hooks/payment/stripe-ideal_stripe`      |
+| Klarna              | `{server_url}/hooks/payment/stripe-klarna_stripe`     |
 | Przelewy24          | `{server_url}/hooks/payment/stripe-przelewy24_stripe` |
 | PromptPay           | `{server_url}/hooks/payment/stripe-promptpay_stripe`  |
 | OXXO                | `{server_url}/hooks/payment/stripe-oxxo_stripe`       |
@@ -173,3 +176,20 @@ Configure your Stripe webhook endpoint to listen to (as listed in the Medusa Str
 ### Apple Pay
 
 Stripe processes Apple Pay as a wallet on top of `card`. This module includes `stripe-apple-pay` so you can **enable Apple Pay explicitly** as its own provider in Medusa regions (see `src/services/stripe-apple-pay.ts`).
+
+### Klarna (`preferred_locale`)
+
+If you want to pass Klarna’s `preferred_locale` to Stripe, include it in the payment session `data` under `payment_method_options.klarna.preferred_locale` (it will be forwarded to the Stripe PaymentIntent request):
+
+```json
+{
+  "provider_id": "pp_stripe-klarna_stripe",
+  "data": {
+    "payment_method_options": {
+      "klarna": {
+        "preferred_locale": "en-US"
+      }
+    }
+  }
+}
+```
